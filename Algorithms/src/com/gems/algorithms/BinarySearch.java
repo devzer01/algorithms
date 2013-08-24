@@ -52,5 +52,18 @@ public class BinarySearch {
 		
 	public static void main(String[] args) {		
 		System.out.println("Sqrt of " + (49 * 49) + " -- " + BinarySearch.findSqrt(49 * 49));		
+		
+		
+		
+		int[] array = new int[50];
+		Random rand = new Random();
+		for (int i = 0; i < array.length; i++)
+		    array[i] = rand.nextInt(1000) + 1;		
+		Arrays.sort(array);
+		
+		int index = BinarySearch.find(array, array[7]);
+		
+		System.out.println("Return of the index is " + index + "\n");
+		
 	}
 }
