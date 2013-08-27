@@ -39,7 +39,7 @@ public class Stack<T> {
 	{
 		T item = stack[--N];
 		stack[N] = null;
-		if (N > 0 && N == stack.length / 4) resize(stack.length / 2);
+		if (N > 100 && N == stack.length / 4) resize(stack.length / 2);
 		return item;
 	}
 }
