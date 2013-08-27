@@ -13,24 +13,45 @@ public class BinarySearch {
 		int m;
 		
 		while (l <= u) {
-			m = (l+u) / 2; // 3
+			m = (l+u) / 2;
 			if (A[m] < k) {
-				l = m + 1; //6
+				l = m + 1;
 			} else if (A[m] == k) {
 				return m;
 			} else {
-				u = m - 1; //5-0
+				u = m - l;
 			}
-		}		
+		}
+		
 		return -1;
 	}
 	
-	public static int findLarge(int[] A, int k) {
+	
+	
+	public static int findSqrt(int key)
+	{
 		
+		int l = 0;
+		int u = 65536;
+
+		while (l+1 <= u) {
+			
+			int mid = l + (u - l) / 2;
+			int midSqr = mid * mid;
+			
+			if (key == midSqr) return mid;
+			
+			if (midSqr > key) {
+				u = mid;
+			} else {
+				l = mid;
+			}
+		}
 		return -1;
 	}
 		
 	public static void main(String[] args) {		
+		System.out.println("Sqrt of " + (49 * 49) + " -- " + BinarySearch.findSqrt(49 * 49));		
 		
 		
 		
