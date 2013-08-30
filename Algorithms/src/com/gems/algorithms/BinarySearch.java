@@ -19,13 +19,33 @@ public class BinarySearch {
 			} else if (A[m] == k) {
 				return m;
 			} else {
-				u = m - l;
+				u = m - 1;
 			}
 		}
 		
 		return -1;
 	}
 	
+	
+	public static int binaryFind(int[] a, int key)
+	{
+		int start = 0;
+		int end = a.length;
+		int mid;
+		
+		while (start <= end) {
+			mid = (start+end)/2;
+			if (a[mid] > key) {
+				end = mid + 1;
+			} else if (a[mid] == key) {
+				return mid;
+			} else {
+				start = mid - 1;
+			}
+		}
+		
+		return -1;
+	}
 	
 	
 	public static int findSqrt(int key)
@@ -61,7 +81,7 @@ public class BinarySearch {
 		    array[i] = rand.nextInt(1000) + 1;		
 		Arrays.sort(array);
 		
-		int index = BinarySearch.find(array, array[7]);
+		int index = BinarySearch.binaryFind(array, array[7]);
 		
 		System.out.println("Return of the index is " + index + "\n");
 		
