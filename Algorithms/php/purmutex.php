@@ -12,7 +12,13 @@ var_dump(binarySearch($array, 0, count($array) - 1, 10)); */
 $result = "";
 //getphonechars("8662665", 0, $result);
 
-doCombine($word, $result, 0);
+//doCombine($word, $result, 0);
+
+$array = array(0,1,3,6,8,3,2,6,9,11,23,25,10);
+sort($array);
+var_dump($array);
+// var_dump(largerThanK($array, 0, count($array) - 1, 25));
+var_dump(valueAsSame($array, 0, count($array) - 1));
 
 function swap(&$word, $xpos, $ypos)
 {
@@ -109,4 +115,62 @@ function doCombine($str, $outstr, $start)
 		}
 		array_pop($outstr);
 	}
+}
+
+function largerThanK($arr, $start, $end, $value)
+{
+	if ($start > $end) return -1;
+	$mid = (int) ($start + ($end - $start) / 2);
+	if ($arr[$mid] == $value) {
+		while ($mid < count($arr) - 1 && $arr[++$mid] <= $value) $null = null;
+		return ($mid >= count($arr) - 1) ? -1 : $mid;
+	} else if ($arr[$mid] < $value) {
+		return largerThanK($arr, $mid + 1, $end, $value);
+	}
+	else return largerThanK($arr, $start, $mid - 1, $value);
+}
+
+function valueAsSame($arr, $start, $end)
+{
+	if ($start > $end) return -1;
+	$mid = (int) ($start + ($end - $start) / 2);
+	if ($arr[$mid] == $mid) {
+		return $mid;
+	} else if ($arr[$mid] < $mid) {
+		return valueAsSame($arr, $mid + 1, $end);
+	}
+	else return valueAsSame($arr, $start, $mid - 1);
+}
+
+function bstSearchRec($node, $value)
+{	
+	while ($node != null) {
+		if ($value < $node->value) {
+			$node = $node->left;
+		} else if ($value > $node->value) {
+			$node = $node->right;
+		} else {
+			return $value;
+		}
+	}
+	
+	return -1;
+}
+
+
+function combinations($str, $result, $start)
+{
+	
+	for ($i=$start; $i < strlen($str) - 1; $i++) {
+	
+		$result[] = $str[$i];
+		echo $result;
+		
+		if ($start < strlen($str)) {
+			combinations($str, $result, $i + 1);
+		}
+	
+		array_pop($result);
+	}
+	
 }
