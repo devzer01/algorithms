@@ -15,10 +15,12 @@ $result = "";
 //doCombine($word, $result, 0);
 
 $array = array(0,1,3,6,8,3,2,6,9,11,23,25,10);
-sort($array);
-var_dump($array);
+//sort($array);
+//var_dump($array);
 // var_dump(largerThanK($array, 0, count($array) - 1, 25));
-var_dump(valueAsSame($array, 0, count($array) - 1));
+//var_dump(valueAsSame($array, 0, count($array) - 1));
+
+var_dump(selectionSort($array));
 
 function swap(&$word, $xpos, $ypos)
 {
@@ -171,6 +173,21 @@ function combinations($str, $result, $start)
 		}
 	
 		array_pop($result);
+	}	
+}
+
+function selectionSort($array) {
+	$N = count($array);
+	if ($N == 1) return $array;
+	
+	for ($i = 0; $i < $N; $i++) {
+		$min = $i;
+		
+		for ($j=$i + 1; $j < $N; $j++) 
+			if ($array[$j] < $array[$min]) $min = $j;
+		swap($array, $i, $min);
+		
 	}
 	
+	return $array;
 }
