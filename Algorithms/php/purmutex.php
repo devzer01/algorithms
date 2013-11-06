@@ -31,7 +31,6 @@ function swap(&$word, $xpos, $ypos)
 
 function purmutex($word, $xpos, $ypos)
 {
-	
 	if ($xpos == $ypos) {
 		echo $word . "\n";
 	} else {	
@@ -109,6 +108,20 @@ function getphonechars($number, $i, &$result)
 function doCombine($str, $outstr, $start)
 {
 	for ($i = $start; $i < strlen($str); $i++) {
+		$outstr[] = $str[$i];
+		echo implode("", $outstr) . "\n";
+		
+		if ($i < (strlen($str) - 1)) {
+			doCombine($str, $outstr, $i + 1);
+		}
+		array_pop($outstr);
+	}
+}
+
+
+function doCom($str, $outstr, $start)
+{
+	for ($i = $start, $i < $start, $i++) {
 		$outstr[] = $str[$i];
 		echo implode("", $outstr) . "\n";
 		

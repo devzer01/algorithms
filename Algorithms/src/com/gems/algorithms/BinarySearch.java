@@ -26,6 +26,26 @@ public class BinarySearch {
 		return -1;
 	}
 	
+	public static int bs(int[] ar, int k)
+	{
+		int begin = 0;
+		int end = ar.length - 1;
+		int middle;
+		
+		while (begin <= end) {
+			middle = begin + (end - begin) / 2;
+			if (ar[middle] < k) {
+				end = middle + 1;
+			} else if (ar[middle] > k) {
+				begin = middle - 1;
+			} else {
+				return ar[middle];
+			}
+		}
+		
+		return -1;
+	}
+	
 	
 	public static int binaryFind(int[] a, int key)
 	{
