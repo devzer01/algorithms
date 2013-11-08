@@ -26,6 +26,48 @@ class BST {
 		return $node;
 	}
 	
+	public function getLowestCommonAnscestor($value1, $value1) {
+		return $this->getLowestCommonAns($this->parent, $value1, $value2);
+	}
+	
+	private function getLowestCommonAns($node, $value1, $value2) {
+		if ($node->value < $value1 && $node->value < $value2) {
+			return $this->getLowestCommonAns($node->right, $value1, $value2);
+		} else if ($node->value > $value1 && $node->value > $value2) {
+			return $this->getLowestCommonAns($node->left, $value1, $value2);
+		} else {
+			return $node->value;
+		}
+	}
+	
+	public function preOrder($node) {
+		
+		print $node->value;
+		
+		if (!is_null($node->left)) $this->preOrder($node->left);
+		
+		if (!is_null($node->right)) $this->preOrder($node->right);
+		
+		return;
+	}
+	
+	public function breadthFirst() 
+	{
+		
+		$queue = array($this->parent);
+		
+		while (count($queue) > 0) {
+
+			$node = array_shift($queue);
+			
+			print $node->value;
+			
+			if ($node->left !== null) array_push($queue, $node->left);
+			if ($node->right !== null) array_push($queue, $node->right);			
+		}
+		
+	}
+	
 }
 
 class Node {
